@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IELTS 5.5 → 6.5+ · THPT Trần Phú · Cây hành trình & Gemini AI</title>
+<style>
+/* ========== RESET & BIẾN ========== */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --navy:#0b2545;--navy-light:#13315c;--blue:#1b4f8a;
+  --gold:#d4a017;--gold-soft:#f0c75e;--bg:#f4f6fa;
+  --card:#fff;--text:#1e2a3a;--muted:#5f6c7b;
+  --border:#dde3ec;--success:#1e7b4c;--warning:#b85c00;
+  --danger:#b02a2a;--radius:14px;--shadow:0 4px 18px rgba(11,37,69,.08);
+}
+body{font-family:'Segoe UI',system-ui,-apple-system,Roboto,'Helvetica Neue',Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;}
+
+/* ========== BADGE ========== */
+.designer-badge{
+  position:fixed;top:16px;right:16px;z-index:9999;
+  background:linear-gradient(135deg,#f0c75e,#d4a017 55%,#b8860b);
+  border-radius:22px;padding:11px 22px 11px 12px;
+  box-shadow:0 10px 28px rgba(180,134,11,.38),0 2px 8px rgba(0,0,0,.12),inset 0 1px 0 rgba(255,255,255,.35);
+  display:flex;align-items:center;gap:13px;
+  border:2px solid rgba(255,255,255,.45);
+  transition:transform .25s,box-shadow .25s;cursor:default;
+}
+.designer-badge:hover{transform:translateY(-2px);box-shadow:0 14px 32px rgba(180,134,11,.45);}
+.designer-badge .avatar{width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,#0b2545,#1b4f8a);color:#f0c75e;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:1.15rem;box-shadow:inset 0 0 0 2.5px rgba(240,199,94,.75);flex-shrink:0;}
+.designer-badge .info{line-height:1.35;color:#0b2545;}
+.designer-badge .name{font-weight:900;font-size:.94rem;display:block;white-space:nowrap;}
+.designer-badge .school{font-weight:700;font-size:.72rem;opacity:.8;display:block;text-transform:uppercase;}
+.designer-badge .phone{font-size:.78rem;font-weight:800;display:inline-block;margin-top:1px;}
+
+/* ========== HEADER ========== */
+header{background:linear-gradient(135deg,var(--navy),var(--navy-light) 55%,#1b3a6b);color:#fff;padding:32px 20px 34px;padding-right:300px;}
+header h1{font-size:1.7rem;}
+header h1 span{color:var(--gold-soft);}
+header p{opacity:.82;font-size:.92rem;margin-top:6px;max-width:760px;}
+
+/* ========== TABS ========== */
+nav.tabs{position:sticky;top:0;z-index:800;background:#fff;border-bottom:2px solid var(--border);display:flex;flex-wrap:wrap;gap:2px;padding:0 12px;box-shadow:0 2px 8px rgba(0,0,0,.04);}
+nav.tabs button{border:none;background:transparent;cursor:pointer;padding:13px 18px;font-weight:700;font-size:.86rem;color:var(--muted);border-bottom:3px solid transparent;transition:.2s;font-family:inherit;}
+nav.tabs button:hover{color:var(--navy);background:#f0f4fa;}
+nav.tabs button.active{color:var(--navy);border-bottom-color:var(--gold);}
+
+/* ========== LAYOUT ========== */
+main{max-width:1180px;margin:0 auto;padding:22px 16px 80px;}
+.tab-panel{display:none;}
+.tab-panel.active{display:block;animation:fadeUp .3s ease;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
+.card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);border:1px solid var(--border);padding:20px 22px;margin-bottom:18px;}
+.card h2{font-size:1.15rem;color:var(--navy);margin-bottom:10px;}
+.card h3{font-size:1rem;color:var(--blue);margin:14px 0 6px;}
+.muted{color:var(--muted);font-size:.86rem;}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+@media(max-width:960px){.grid-2{grid-template-columns:1fr;}header{padding-right:20px;padding-top:100px;}.designer-badge{position:relative;top:auto;right:auto;border-radius:0;width:100%;justify-content:center;}}
+
+/* ========== REG HERO ========== */
+.reg-hero{background:linear-gradient(135deg,#fff8e1,#fef3c7 50%,#fde68a);border:3px solid var(--gold);border-radius:20px;padding:24px 28px;margin-bottom:24px;box-shadow:0 8px 24px rgba(212,160,23,.22);position:relative;overflow:hidden;}
+.reg-hero-header{display:flex;align-items:center;gap:14px;margin-bottom:14px;}
+.reg-hero-icon{width:54px;height:54px;border-radius:16px;background:linear-gradient(135deg,var(--navy),var(--blue));color:var(--gold-soft);display:flex;align-items:center;justify-content:center;font-size:1.7rem;flex-shrink:0;}
+.reg-hero h2{font-size:1.2rem;color:var(--navy);}
+.reg-hero .reg-sub{font-size:.85rem;color:#7a5d00;margin-top:3px;font-weight:600;}
+.reg-form{display:grid;grid-template-columns:2fr 1fr 2fr auto;gap:12px;align-items:end;}
+@media(max-width:760px){.reg-form{grid-template-columns:1fr 1fr;}}
+@media(max-width:520px){.reg-form{grid-template-columns:1fr;}}
+.reg-field label{display:block;font-weight:800;font-size:.74rem;color:var(--navy);text-transform:uppercase;letter-spacing:.6px;margin-bottom:5px;}
+.reg-field input{width:100%;padding:11px 14px;border:2px solid #e0c46a;border-radius:10px;font-family:inherit;font-size:.9rem;background:#fffef8;font-weight:600;}
+.reg-field input:focus{outline:none;border-color:var(--navy);box-shadow:0 0 0 4px rgba(212,160,23,.25);}
+.reg-hero .save-btn{padding:12px 26px;background:var(--navy);color:#fff;border:none;border-radius:10px;font-weight:900;font-size:.88rem;cursor:pointer;font-family:inherit;white-space:nowrap;}
+.reg-hero .save-btn:hover{background:var(--blue);}
+.reg-status{grid-column:1/-1;font-size:.84rem;font-weight:800;padding:8px 14px;border-radius:8px;display:none;}
+.reg-status.ok{display:block;background:#d4edda;color:#155724;border-left:4px solid var(--success);}
+.reg-status.err{display:block;background:#fff3cd;color:#856404;border-left:4px solid var(--warning);}
+
+/* ========== BUTTONS ========== */
+.btn{display:inline-block;padding:10px 20px;border-radius:9px;border:none;cursor:pointer;font-weight:700;font-size:.85rem;font-family:inherit;transition:.2s;}
+.btn-primary{background:var(--navy);color:#fff;}
+.btn-primary:hover{background:var(--blue);}
+.btn-gold{background:var(--gold);color:var(--navy);}
+.btn-gold:hover{background:var(--gold-soft);}
+.btn-outline{background:transparent;border:2px solid var(--navy);color:var(--navy);}
+.btn-outline:hover{background:var(--navy);color:#fff;}
+.btn-sm{padding:6px 14px;font-size:.8rem;}
+
+/* ========== STATS ========== */
+.stat-row{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:16px;}
+.stat-box{flex:1 1 150px;background:#fff;border:1px solid var(--border);border-radius:12px;padding:14px 16px;text-align:center;}
+.stat-box .num{font-size:1.6rem;font-weight:900;color:var(--navy);line-height:1.2;}
+.stat-box .lbl{font-size:.75rem;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;}
+.band-badge{display:inline-block;padding:4px 14px;border-radius:20px;font-weight:900;font-size:1.1rem;}
+.band-5{background:#fff3cd;color:#856404;}
+.band-6{background:#d4edda;color:#155724;}
+.band-65{background:#cce5ff;color:#004085;}
+
+/* ========== EXERCISES ========== */
+.exercise{background:#fafbfd;border:1px solid var(--border);border-radius:12px;padding:16px;margin:12px 0;}
+.exercise .q-text{font-weight:700;color:var(--navy);margin-bottom:8px;font-size:.9rem;}
+.exercise input[type="text"],.exercise select{padding:8px 12px;border:1.5px solid var(--border);border-radius:7px;font-family:inherit;font-size:.88rem;}
+.exercise input:focus,.exercise select:focus{outline:none;border-color:var(--blue);}
+.feedback{font-size:.83rem;font-weight:700;margin-top:6px;}
+.feedback.correct{color:var(--success);}
+.feedback.wrong{color:var(--danger);}
+.feedback.info{color:var(--warning);}
+.timer-display{font-family:'Courier New',monospace;font-size:1.3rem;font-weight:900;color:var(--navy);background:#eef3fb;display:inline-block;padding:4px 16px;border-radius:8px;margin-bottom:10px;}
+.word-count{font-size:.8rem;color:var(--muted);}
+table{width:100%;border-collapse:collapse;font-size:.83rem;}
+th,td{padding:9px 11px;text-align:left;border-bottom:1px solid var(--border);}
+th{background:#eef3fb;color:var(--navy);font-weight:800;font-size:.78rem;text-transform:uppercase;}
+tr:hover td{background:#f8faff;}
+.note{background:#eef7f1;border-left:4px solid var(--success);padding:10px 14px;border-radius:0 8px 8px 0;font-size:.83rem;margin:8px 0;}
+.reminder{background:linear-gradient(135deg,#fffbea,#fff8e1);border:1.5px dashed var(--gold);border-radius:12px;padding:14px 18px;margin-bottom:16px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;}
+.reminder strong{color:var(--warning);}
+footer{text-align:center;padding:28px 16px;font-size:.8rem;color:var(--muted);border-top:1px solid var(--border);margin-top:30px;}
+.mt-8{margin-top:8px;}.mt-12{margin-top:12px;}.mb-8{margin-bottom:8px;}
+.tag{display:inline-block;background:#eef3fb;color:var(--blue);padding:2px 10px;border-radius:12px;font-size:.72rem;font-weight:700;margin-right:4px;}
+
+/* ========== JOURNEY TREE ========== */
+.journey-tree-wrap{overflow-x:auto;padding:34px 20px 60px;background:radial-gradient(circle at 50% 0%,#eef3fb 0%,var(--bg) 70%);border-radius:16px;border:1px solid var(--border);margin-bottom:18px;}
+.journey-tree{min-width:1040px;margin:0 auto;display:flex;flex-direction:column;align-items:center;transition:transform .4s cubic-bezier(.2,.8,.2,1);transform-origin:top center;}
+.journey-tree-wrap:hover .journey-tree{transform:scale(1.06);}
+.jt-start,.jt-goal{display:flex;align-items:center;gap:8px;padding:12px 26px;border-radius:30px;font-weight:900;font-size:.95rem;letter-spacing:.4px;position:relative;z-index:2;box-shadow:0 8px 20px rgba(11,37,69,.25);}
+.jt-start{background:linear-gradient(135deg,var(--navy),var(--blue));color:#fff;}
+.jt-goal{background:linear-gradient(135deg,#b8860b,var(--gold),var(--gold-soft));color:var(--navy);}
+.jt-line{width:2px;height:22px;background:var(--border);}
+.tree-cols{position:relative;width:100%;display:grid;grid-template-columns:repeat(4,1fr);padding:28px 0;}
+.tree-cols::before,.tree-cols::after{content:'';position:absolute;left:12.5%;right:12.5%;height:2px;background:var(--border);}
+.tree-cols::before{top:0;}.tree-cols::after{bottom:0;}
+.tree-col{position:relative;padding:0 12px;display:flex;flex-direction:column;align-items:center;}
+.tree-col::before{content:'';position:absolute;top:-28px;left:50%;width:2px;height:28px;background:var(--border);transform:translateX(-1px);}
+.tree-col::after{content:'';position:absolute;bottom:-28px;left:50%;width:2px;height:28px;background:var(--border);transform:translateX(-1px);}
+.tree-skill{width:100%;padding:10px 14px;border-radius:12px;background:linear-gradient(135deg,var(--navy),var(--blue));color:#fff;font-weight:800;font-size:.84rem;text-align:center;box-shadow:0 6px 14px rgba(11,37,69,.22);cursor:pointer;position:relative;z-index:2;transition:.2s;}
+.tree-skill:hover{transform:translateY(-2px);box-shadow:0 10px 20px rgba(11,37,69,.3);}
+.tree-milestones{position:relative;width:100%;display:flex;flex-direction:column;gap:14px;margin-top:16px;padding-top:6px;}
+.tree-milestones::before{content:'';position:absolute;left:50%;top:-16px;height:calc(100% + 16px);width:2px;background:var(--border);transform:translateX(-1px);z-index:0;}
+.tree-node{position:relative;z-index:1;display:flex;align-items:center;justify-content:center;gap:7px;padding:9px 10px;border-radius:10px;background:#fff;border:2px solid var(--border);font-size:.76rem;font-weight:700;color:var(--muted);text-align:center;cursor:pointer;transition:.22s;}
+.tree-node:hover{border-color:var(--gold);transform:translateY(-2px);box-shadow:0 6px 14px rgba(0,0,0,.08);}
+.tree-node .dot{width:9px;height:9px;border-radius:50%;background:currentColor;flex-shrink:0;}
+.tree-node.done{background:#eef7f1;border-color:var(--success);color:var(--success);}
+.tree-node.current{background:#fffbea;border-color:var(--gold);color:var(--navy);animation:pulseGold 1.8s infinite;}
+@keyframes pulseGold{0%,100%{box-shadow:0 0 0 0 rgba(212,160,23,.55);}50%{box-shadow:0 0 0 9px rgba(212,160,23,0);}}
+.legend-dot{display:inline-block;width:12px;height:12px;border-radius:50%;vertical-align:-1px;margin-right:4px;}
+.legend-dot.done{background:var(--success);}.legend-dot.current{background:var(--gold);}.legend-dot.todo{background:#c9d2de;}
+
+/* ========== AI PANEL ========== */
+.ai-panel{background:linear-gradient(135deg,#f0f7ff,#e8f1fd);border:1.5px solid #b8d4f0;border-radius:12px;padding:14px 16px;margin-top:14px;}
+.ai-panel h4{color:var(--navy);font-size:.92rem;display:flex;align-items:center;gap:6px;margin-bottom:8px;}
+.ai-panel textarea{width:100%;padding:10px;border:1.5px solid #b8d4f0;border-radius:8px;font-family:inherit;font-size:.85rem;resize:vertical;background:#fff;}
+.ai-panel textarea:focus{outline:none;border-color:var(--blue);}
+.ai-actions{display:flex;gap:10px;margin-top:10px;flex-wrap:wrap;align-items:center;}
+.ai-output{margin-top:10px;padding:12px 14px;background:#fff;border-radius:8px;border-left:4px solid var(--blue);font-size:.85rem;line-height:1.75;white-space:pre-wrap;display:none;}
+.ai-output.show{display:block;}
+.ai-status{font-size:.78rem;font-weight:700;}
+.ai-status.loading{color:var(--warning);}.ai-status.error{color:var(--danger);}.ai-status.ok{color:var(--success);}
+.spinner{display:inline-block;width:14px;height:14px;border:2px solid #ccc;border-top-color:var(--navy);border-radius:50%;animation:spin .8s linear infinite;vertical-align:-2px;margin-right:6px;}
+@keyframes spin{to{transform:rotate(360deg);}}
+.ai-key-box{display:flex;gap:8px;align-items:center;flex-wrap:wrap;background:#fffbea;border:1.5px dashed var(--gold);padding:10px 12px;border-radius:10px;margin-bottom:12px;font-size:.82rem;}
+.ai-key-box input{flex:1 1 220px;padding:8px 10px;border:1.5px solid #e0c46a;border-radius:6px;font-family:inherit;font-size:.82rem;}
+.ai-key-box input:focus{outline:none;border-color:var(--navy);}
+.journey-progress{height:12px;background:#e6ecf5;border-radius:20px;overflow:hidden;margin:6px 0 4px;border:1px solid var(--border);}
+.journey-progress > div{height:100%;width:0%;background:linear-gradient(90deg,var(--success),var(--gold));transition:width .6s cubic-bezier(.2,.8,.2,1);}
+@media(max-width:960px){.journey-tree-wrap:hover .journey-tree{transform:none;}}
+
+/* ========== HƯỚNG DẪN ========== */
+.guide-step{display:flex;gap:14px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:12px;margin-bottom:12px;}
+.guide-step .step-num{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--navy),var(--blue));color:#fff;display:flex;align-items:center;justify-content:center;font-weight:900;flex-shrink:0;}
+.guide-step .step-body{flex:1;}
+.guide-step .step-body h4{color:var(--navy);font-size:.94rem;margin-bottom:4px;}
+.guide-step .step-body p{font-size:.85rem;color:var(--text);margin-bottom:6px;}
+.guide-step .step-body code{background:#f0f4fa;padding:1px 6px;border-radius:4px;font-size:.82rem;color:var(--danger);}
+.guide-step .step-body .tip{background:#fffbea;border-left:3px solid var(--gold);padding:6px 10px;font-size:.8rem;color:#7a5d00;border-radius:0 6px 6px 0;margin-top:6px;}
+.guide-step .step-body a{color:var(--blue);font-weight:700;}
+</style>
+</head>
+<body>
+
+<div class="designer-badge" title="Thiết kế bởi Thầy Nguyễn Hữu Trung">
+  <div class="avatar">T</div>
+  <div class="info">
+    <span class="name">Thầy Nguyễn Hữu Trung</span>
+    <span class="school">THPT Trần Phú</span>
+    <span class="phone">📞 0964848989</span>
+  </div>
+</div>
+
+<header>
+  <h1>IELTS <span>5.5 → 6.5+</span> · Lộ trình cá nhân hoá</h1>
+  <p>Dành cho học sinh THPT Trần Phú · Cây hành trình trực quan · AI Gemini tư vấn trực tiếp trên câu trả lời của bạn.</p>
+</header>
+
+<nav class="tabs" id="mainTabs">
+  <button class="active" data-tab="dashboard">📊 Tổng quan</button>
+  <button data-tab="journey">🌳 Cây hành trình</button>
+  <button data-tab="guide">🔑 Hướng dẫn lấy API Key</button>
+  <button data-tab="listening">🎧 Nghe</button>
+  <button data-tab="speaking">🗣️ Nói</button>
+  <button data-tab="reading">📖 Đọc</button>
+  <button data-tab="writing">✍️ Viết</button>
+  <button data-tab="mocktests">📝 Đề thi thử</button>
+  <button data-tab="daily">📅 Luyện hàng ngày</button>
+</nav>
+
+<main>
+
+<!-- TAB DASHBOARD -->
+<section class="tab-panel active" id="tab-dashboard">
+  <div class="reg-hero" id="regHero">
+    <div class="reg-hero-header">
+      <div class="reg-hero-icon">🎓</div>
+      <div>
+        <h2>BƯỚC 1 · Lưu lại thông tin học sinh</h2>
+        <div class="reg-sub">Lưu <strong>Họ tên – Lớp – Trường</strong> để thầy Trung và AI theo dõi tiến bộ của bạn.</div>
+      </div>
+    </div>
+    <div class="reg-form">
+      <div class="reg-field"><label>👤 Họ và tên</label><input type="text" id="inpName" placeholder="Nguyễn Văn A"></div>
+      <div class="reg-field"><label>🏫 Lớp</label><input type="text" id="inpClass" placeholder="11A1"></div>
+      <div class="reg-field"><label>🏛️ Trường</label><input type="text" id="inpSchool" value="THPT Trần Phú"></div>
+      <button class="save-btn" onclick="saveStudent()">💾 Lưu thông tin</button>
+      <div class="reg-status" id="regStatus"></div>
+    </div>
+  </div>
+
+  <div class="reminder" id="reminderBox">
+    <span>🔔 <strong>Nhắc nhở:</strong> Luyện <strong>25–30 phút/ngày</strong> · Ôn từ vựng chu kỳ <strong>1–3–7–14</strong> ngày.</span>
+    <button class="btn btn-sm btn-gold" onclick="markTodayDone()">✅ Đã luyện hôm nay</button>
+  </div>
+
+  <div class="stat-row">
+    <div class="stat-box"><div class="num" id="statStreak">0</div><div class="lbl">🔥 Chuỗi ngày</div></div>
+    <div class="stat-box"><div class="num" id="statTotalSessions">0</div><div class="lbl">📚 Buổi luyện</div></div>
+    <div class="stat-box"><div class="num" id="statAvgBand">—</div><div class="lbl">🎯 Band ước tính</div></div>
+    <div class="stat-box"><div class="num" id="statWords">0</div><div class="lbl">📝 Từ vựng</div></div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <h2>📈 Điểm theo kỹ năng</h2>
+      <table>
+        <thead><tr><th>Kỹ năng</th><th>Gần nhất</th><th>Mục tiêu</th><th>Trạng thái</th></tr></thead>
+        <tbody>
+          <tr><td>🎧 Listening</td><td id="lastListening">—</td><td>6.5</td><td id="statusListening">—</td></tr>
+          <tr><td>🗣️ Speaking</td><td id="lastSpeaking">—</td><td>6.5</td><td id="statusSpeaking">—</td></tr>
+          <tr><td>📖 Reading</td><td id="lastReading">—</td><td>6.5</td><td id="statusReading">—</td></tr>
+          <tr><td>✍️ Writing</td><td id="lastWriting">—</td><td>6.5</td><td id="statusWriting">—</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="card">
+      <h2>📋 Đánh giá & Gợi ý</h2>
+      <div id="evaluationBox"><p class="muted">Chưa đủ dữ liệu. Hoàn thành ít nhất một bài mỗi kỹ năng để nhận đánh giá.</p></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>🕒 Lịch sử luyện tập</h2>
+    <div style="overflow-x:auto;"><table><thead><tr><th>Thời gian</th><th>Kỹ năng</th><th>Hoạt động</th><th>Kết quả</th></tr></thead><tbody id="historyBody"><tr><td colspan="4" class="muted">Chưa có lịch sử.</td></tr></tbody></table></div>
+    <button class="btn btn-sm btn-outline mt-8" onclick="exportData()">⬇️ Xuất JSON</button>
+    <button class="btn btn-sm btn-outline mt-8" onclick="clearData()" style="border-color:var(--danger);color:var(--danger);">🗑️ Xoá dữ liệu</button>
+  </div>
+</section>
+
+<!-- TAB JOURNEY -->
+<section class="tab-panel" id="tab-journey">
+  <div class="card">
+    <h2>🔑 Cấu hình AI Gemini</h2>
+    <div class="ai-key-box">
+      <strong style="color:var(--warning);">Gemini API Key:</strong>
+      <input type="password" id="geminiKeyInput" placeholder="AIza...">
+      <button class="btn btn-sm btn-gold" onclick="saveGeminiKey()">Lưu key</button>
+      <span id="geminiKeyStatus" class="ai-status"></span>
+    </div>
+    <p class="muted" style="font-size:.76rem;">Lấy key miễn phí tại <strong>aistudio.google.com/apikey</strong>. Chưa biết cách lấy? Xem tab <strong>🔑 Hướng dẫn lấy API Key</strong> để được hướng dẫn từng bước.</p>
+  </div>
+
+  <div class="card">
+    <h2>🌳 Cây hành trình 5.5 → 6.5+</h2>
+    <p class="muted">Bấm vào bất kỳ mốc nào để nhảy thẳng tới vùng luyện tập. Rê chuột vào khung để phóng to.</p>
+    <div style="display:flex;align-items:center;gap:12px;margin:14px 0 6px;flex-wrap:wrap;">
+      <span style="font-weight:800;color:var(--navy);font-size:.85rem;">Tiến độ:</span>
+      <div class="journey-progress" style="flex:1 1 220px;"><div id="journeyProgressBar"></div></div>
+      <strong id="journeyProgressText" style="color:var(--gold);font-size:1rem;">0%</strong>
+    </div>
+    <p id="journeyHere" style="font-size:.84rem;color:var(--warning);font-weight:700;margin-bottom:14px;"></p>
+    <div class="journey-tree-wrap"><div class="journey-tree">
+      <div class="jt-start">🚀 XUẤT PHÁT · Band 5.5</div><div class="jt-line"></div>
+      <div class="tree-cols" id="journeyCols"></div><div class="jt-line"></div>
+      <div class="jt-goal">🏆 MỤC TIÊU · Band 6.5+</div>
+    </div></div>
+    <div style="display:flex;gap:18px;flex-wrap:wrap;justify-content:center;margin-top:6px;font-size:.78rem;color:var(--muted);">
+      <span><span class="legend-dot done"></span> Đã xong</span>
+      <span><span class="legend-dot current"></span> Đang học · Bạn ở đây</span>
+      <span><span class="legend-dot todo"></span> Chưa bắt đầu</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>🤖 Trợ lý AI Gemini · Hỏi đáp</h2>
+    <div class="ai-panel">
+      <textarea id="aiTutorInput" rows="3" placeholder="VD: Làm sao paraphrase mở bài Writing Task 2 tự nhiên hơn?"></textarea>
+      <div class="ai-actions">
+        <button class="btn btn-sm btn-primary" onclick="aiTutorAsk()">✨ Gửi câu hỏi</button>
+        <span id="aiTutorStatus" class="ai-status"></span>
+      </div>
+      <div id="aiTutorOut" class="ai-output"></div>
+    </div>
+  </div>
+</section>
+
+<!-- TAB GUIDE -->
+<section class="tab-panel" id="tab-guide">
+  <div class="card">
+    <h2>🔑 Hướng dẫn lấy API Key Gemini cho người mới</h2>
+    <p class="muted">Chỉ cần một tài khoản Gmail và 2 phút là xong. Làm theo đúng thứ tự các bước dưới đây.</p>
+  </div>
+
+  <div class="guide-step">
+    <div class="step-num">1</div>
+    <div class="step-body">
+      <h4>Mở Google AI Studio</h4>
+      <p>Mở trình duyệt, gõ địa chỉ <a href="https://aistudio.google.com" target="_blank">aistudio.google.com</a> hoặc <a href="https://ai.dev" target="_blank">ai.dev</a>. Cả hai đều vào cùng một trang.</p>
+    </div>
+  </div>
+
+  <div class="guide-step">
+    <div class="step-num">2</div>
+    <div class="step-body">
+      <h4>Đăng nhập bằng tài khoản Google</h4>
+      <p>Bấm nút <strong>Sign in</strong>, chọn tài khoản Gmail của bạn. Nếu là lần đầu, một bảng điều khoản hiện ra — tích ô đồng ý rồi bấm <strong>Continue</strong> hoặc <strong>I accept</strong>.</p>
+      <div class="tip">💡 Bước này chỉ làm một lần duy nhất. Lần sau vào sẽ tự động đăng nhập.</div>
+    </div>
+  </div>
+
+  <div class="guide-step">
+    <div class="step-num">3</div>
+    <div class="step-body">
+      <h4>Tìm nút "Get API key"</h4>
+      <p>Nhìn cột bên trái của trang, tìm biểu tượng 🔑 với dòng chữ <strong>Get API key</strong> và bấm vào. Hoặc mở thẳng địa chỉ <a href="https://aistudio.google.com/app/apikey" target="_blank">aistudio.google.com/app/apikey</a>.</p>
+    </div>
+  </div>
+
+  <div class="guide-step">
+    <div class="step-num">4</div>
+    <div class="step-body">
+      <h4>Bấm "Create API key"</h4>
+      <p>Trong trang quản lý, bấm nút xanh <strong>Create API key</strong>. Một hộp thoại hiện ra cho bạn chọn dự án — với người mới, hãy chọn <strong>"Create API key in new project"</strong> để Google tự tạo dự án mới cho bạn.</p>
+      <div class="tip">💡 Không cần cấu hình gì thêm. Đợi vài giây là xong.</div>
+    </div>
+  </div>
+
+  <div class="guide-step">
+    <div class="step-num">5</div>
+    <div class="step-body">
+      <h4>Copy và lưu key ngay</h4>
+      <p>Một chuỗi ký tự bắt đầu bằng <code>AIzaSy...</code> sẽ hiện ra. Bấm biểu tượng 📋 để sao chép.</p>
+      <div class="tip">⚠️ Key chỉ hiện đầy đủ một lần duy nhất. Hãy dán vào Notepad, Google Keep hoặc trình quản lý mật khẩu ngay lập tức. Nếu quên, bạn sẽ phải xoá và tạo key mới.</div>
+    </div>
+  </div>
+
+  <div class="guide-step">
+    <div class="step-num">6</div>
+    <div class="step-body">
+      <h4>Dán key vào trang web này</h4>
+      <p>Chuyển sang tab <strong>🌳 Cây hành trình</strong> → tìm ô <strong>"Gemini API Key"</strong> → dán key vừa copy → bấm <strong>Lưu key</strong>. Khi thấy dòng chữ xanh <em>"✅ Đã lưu key (chỉ trên máy này)"</em> là thành công.</p>
+    </div>
+  </div>
+
+  <div class="guide-step">
+    <div class="step-num">7</div>
+    <div class="step-body">
+      <h4>Dùng thử AI</h4>
+      <p>Vào bất kỳ tab kỹ năng nào (Listening / Reading / Writing / Speaking), làm bài rồi bấm <strong>"✨ Nhờ AI nhận xét"</strong>. Gemini sẽ đọc đúng câu trả lời của bạn và trả lời bằng tiếng Việt.</p>
+    </div>
+  </div>
+
+  <div class="card" style="background:#fffbea;border:2px solid var(--gold);">
+    <h2>📌 Những điều cần biết</h2>
+    <ul class="muted" style="font-size:.86rem;margin-left:18px;line-height:1.9;">
+      <li><strong>Miễn phí:</strong> Không cần thẻ tín dụng. Gói miễn phí cho phép khoảng <strong>10–15 lượt gọi/phút</strong> và vài trăm lượt/ngày — thừa sức cho việc học cá nhân.</li>
+      <li><strong>Bảo mật:</strong> Key được lưu vào <code>localStorage</code> của trình duyệt bạn đang dùng. Không ai khác nhìn thấy. Không gửi lên server nào ngoài Google.</li>
+      <li><strong>Không chia sẻ:</strong> Tuyệt đối không chụp màn hình key hoặc gửi qua chat. Nếu lỡ lộ, quay lại <a href="https://aistudio.google.com/app/apikey" target="_blank">trang quản lý</a> xoá key đó và tạo key mới.</li>
+      <li><strong>Nếu gặp lỗi:</strong> Kiểm tra key đã dán đúng chưa, có kết nối mạng không. Nếu vẫn lỗi, thử tải lại trang hoặc đổi trình duyệt.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- TAB LISTENING -->
+<section class="tab-panel" id="tab-listening">
+  <div class="card">
+    <h2>🎧 Luyện Nghe · Section 1</h2>
+    <div style="margin-bottom:10px;">
+      <div class="timer-display" id="listenTimer">10:00</div>
+      <button class="btn btn-sm btn-gold" onclick="startTimer('listenTimer',600)">▶ Bắt đầu</button>
+      <button class="btn btn-sm btn-outline" onclick="resetTimer('listenTimer',600)">↺ Đặt lại</button>
+    </div>
+    <div class="exercise">
+      <div class="q-text">Gym Membership Enquiry · Form Completion</div>
+      <div id="listenQuestions"></div>
+      <button class="btn btn-primary mt-12" onclick="checkListening()">Nộp bài & Chấm</button>
+      <div id="listenResult" class="mt-12"></div>
+    </div>
+    <div class="ai-panel">
+      <h4>🤖 AI Gemini · Phân tích lỗi Listening</h4>
+      <div class="ai-actions">
+        <button class="btn btn-sm btn-primary" onclick="aiReviewListening()">✨ Nhờ AI nhận xét</button>
+        <span id="aiListenStatus" class="ai-status"></span>
+      </div>
+      <div id="aiListenOut" class="ai-output"></div>
+    </div>
+  </div>
+</section>
+
+<!-- TAB SPEAKING -->
+<section class="tab-panel" id="tab-speaking">
+  <div class="card">
+    <h2>🗣️ Luyện Nói</h2>
+    <div class="grid-2">
+      <div>
+        <h3>Part 1 — Interview</h3>
+        <div class="exercise">
+          <div class="q-text">Where are you from?</div>
+          <div class="timer-display" id="speakTimer1">00:40</div>
+          <button class="btn btn-sm btn-gold" onclick="startTimer('speakTimer1',40)">▶ Bắt đầu nói</button>
+          <button class="btn btn-sm btn-outline" onclick="recordSpeaking('Part 1')">🎙 Ghi nhận</button>
+        </div>
+      </div>
+      <div>
+        <h3>Part 2 — Cue Card</h3>
+        <div class="exercise">
+          <div class="q-text">Describe a place you like to visit in your free time.</div>
+          <div class="timer-display" id="speakTimer2">02:00</div>
+          <button class="btn btn-sm btn-gold" onclick="startTimer('speakTimer2',120)">▶ Bắt đầu nói</button>
+          <button class="btn btn-sm btn-outline" onclick="recordSpeaking('Part 2')">🎙 Ghi nhận</button>
+        </div>
+      </div>
+    </div>
+    <div class="note mt-12">💡 <strong>AREA:</strong> Answer → Reason → Example → Alternative.</div>
+    <div class="ai-panel">
+      <h4>🤖 AI Gemini · Nhận xét câu trả lời Nói</h4>
+      <textarea id="speakAnswerInput" rows="4" placeholder="Gõ lại (transcript) câu trả lời nói của bạn..."></textarea>
+      <div class="ai-actions">
+        <button class="btn btn-sm btn-primary" onclick="aiReviewSpeaking()">✨ Nhờ AI nhận xét</button>
+        <span id="aiSpeakStatus" class="ai-status"></span>
+      </div>
+      <div id="aiSpeakOut" class="ai-output"></div>
+    </div>
+  </div>
+</section>
+
+<!-- TAB READING -->
+<section class="tab-panel" id="tab-reading">
+  <div class="card">
+    <h2>📖 Luyện Đọc · The History of Coffee</h2>
+    <div style="margin-bottom:10px;">
+      <div class="timer-display" id="readTimer">10:00</div>
+      <button class="btn btn-sm btn-gold" onclick="startTimer('readTimer',600)">▶ Bắt đầu</button>
+      <button class="btn btn-sm btn-outline" onclick="resetTimer('readTimer',600)">↺ Đặt lại</button>
+    </div>
+    <div class="exercise">
+      <div style="font-size:.87rem;line-height:1.8;background:#fff;padding:14px;border-radius:8px;border:1px solid var(--border);">
+        <p><strong>The History of Coffee</strong></p>
+        <p>Coffee is one of the most widely consumed beverages in the world, with over two billion cups drunk every day. According to a popular legend, coffee was discovered in Ethiopia in the 9th century by a goat herder named Kaldi. He noticed that his goats became unusually energetic after eating the red berries of a certain tree. From Ethiopia, coffee spread to the Arabian Peninsula. By the 15th century, coffee was being cultivated in Yemen and traded across the Middle East.</p>
+      </div>
+      <div id="readQuestions" class="mt-12"></div>
+      <button class="btn btn-primary mt-12" onclick="checkReading()">Nộp bài & Chấm</button>
+      <div id="readResult" class="mt-12"></div>
+    </div>
+    <div class="ai-panel">
+      <h4>🤖 AI Gemini · Giải thích T/F/NG</h4>
+      <div class="ai-actions">
+        <button class="btn btn-sm btn-primary" onclick="aiReviewReading()">✨ Nhờ AI nhận xét</button>
+        <span id="aiReadStatus" class="ai-status"></span>
+      </div>
+      <div id="aiReadOut" class="ai-output"></div>
+    </div>
+  </div>
+</section>
+
+<!-- TAB WRITING -->
+<section class="tab-panel" id="tab-writing">
+  <div class="card">
+    <h2>✍️ Luyện Viết · Task 2</h2>
+    <div class="exercise">
+      <div class="q-text">Task 2 · 40 phút · ≥ 250 từ</div>
+      <p style="font-size:.88rem;margin:8px 0;"><em>Some people believe that governments should invest more money in public transport than in building new roads. To what extent do you agree or disagree?</em></p>
+      <div style="margin-bottom:10px;">
+        <div class="timer-display" id="writeTimer">40:00</div>
+        <button class="btn btn-sm btn-gold" onclick="startTimer('writeTimer',2400)">▶ Bắt đầu</button>
+        <button class="btn btn-sm btn-outline" onclick="resetTimer('writeTimer',2400)">↺ Đặt lại</button>
+      </div>
+      <textarea id="writingInput" rows="10" placeholder="Viết bài của bạn..." style="width:100%;padding:12px;border:1.5px solid var(--border);border-radius:8px;font-family:inherit;font-size:.88rem;line-height:1.7;resize:vertical;" oninput="updateWordCount()"></textarea>
+      <div class="word-count" id="wordCount">Số từ: 0 / 250</div>
+      <button class="btn btn-primary mt-8" onclick="submitWriting()">📤 Chấm & Lưu điểm</button>
+      <div id="writingResult" class="mt-12"></div>
+    </div>
+    <div class="ai-panel">
+      <h4>🤖 AI Gemini · Chấm Writing theo 4 tiêu chí</h4>
+      <div class="ai-actions">
+        <button class="btn btn-sm btn-primary" onclick="aiReviewWriting()">✨ Nhờ AI chấm bài</button>
+        <span id="aiWriteStatus" class="ai-status"></span>
+      </div>
+      <div id="aiWriteOut" class="ai-output"></div>
+    </div>
+  </div>
+</section>
+
+<!-- TAB MOCKTESTS -->
+<section class="tab-panel" id="tab-mocktests">
+  <div class="card">
+    <h2>📝 3 Đề thi thử tổng hợp</h2>
+    <div class="mock-test-tabs" id="mockTabs" style="display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap;"></div>
+    <div id="mockContent"></div>
+  </div>
+</section>
+
+<!-- TAB DAILY -->
+<section class="tab-panel" id="tab-daily">
+  <div class="card">
+    <h2>📅 Câu hỏi luyện hàng ngày</h2>
+    <div class="exercise" id="dailyBox">
+      <div class="q-text" id="dailyQuestion">Đang tải...</div>
+      <div id="dailyAnswerArea"></div>
+      <button class="btn btn-gold mt-8" onclick="newDailyQuestion()">🔄 Câu khác</button>
+    </div>
+  </div>
+  <div class="card">
+    <h2>✅ Checklist hôm nay</h2>
+    <label style="display:block;margin:8px 0;"><input type="checkbox" data-task="vocab"> Ôn 20 từ vựng</label>
+    <label style="display:block;margin:8px 0;"><input type="checkbox" data-task="listen"> Nghe 1 section + transcript</label>
+    <label style="display:block;margin:8px 0;"><input type="checkbox" data-task="read"> Đọc 1 passage + chữa lỗi</label>
+    <label style="display:block;margin:8px 0;"><input type="checkbox" data-task="write"> Viết Task 2 hoặc nói 2 phút</label>
+    <button class="btn btn-primary mt-8" onclick="saveChecklist()">Lưu tiến độ</button>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <p><strong>IELTS 5.5 → 6.5+ · THPT Trần Phú</strong> · Thầy Nguyễn Hữu Trung · 0964848989</p>
+  <p style="margin-top:6px;">Dữ liệu lưu cục bộ trên trình duyệt (localStorage). Key AI chỉ dùng cho mục đích học tập.</p>
+</footer>
+
+<script>
+/* ============================================================
+   0. DỮ LIỆU & TIỆN ÍCH
+   ============================================================ */
+const STORAGE_KEY = 'ielts_tranphu_data_v4';
+const KEY_STORAGE = 'gemini_api_key_tranphu';
+
+let APP = {
+  student:{name:'',class:'',school:'THPT Trần Phú'},
+  history:[],vocab:[],checkins:[],
+  listeningScore:null,readingScore:null,
+  writingBand:null,speakingBand:null,
+  mockListenScore:null,mockReadScore:null
+};
+
+function loadData(){
+  try{const raw=localStorage.getItem(STORAGE_KEY);if(raw)APP=Object.assign(APP,JSON.parse(raw));}catch(e){}
+  document.getElementById('inpName').value=APP.student.name||'';
+  document.getElementById('inpClass').value=APP.student.class||'';
+  document.getElementById('inpSchool').value=APP.student.school||'THPT Trần Phú';
+  if(APP.student.name&&APP.student.class)showRegStatus('ok','✅ Đã lưu: '+APP.student.name+' – '+APP.student.class);
+}
+function persist(){try{localStorage.setItem(STORAGE_KEY,JSON.stringify(APP));}catch(e){}}
+function todayStr(){return new Date().toISOString().slice(0,10);}
+function nowStr(){return new Date().toLocaleString('vi-VN');}
+
+function requireRegistration(){
+  if(APP.student.name&&APP.student.class)return true;
+  alert('💡 Bạn hãy lưu "Họ tên" và "Lớp" ở tab Tổng quan trước khi làm bài nhé.');
+  const btn=document.querySelector('#mainTabs button[data-tab="dashboard"]');
+  if(btn)btn.click();
+  setTimeout(()=>{const h=document.getElementById('regHero');if(h)h.scrollIntoView({behavior:'smooth',block:'center'});document.getElementById('inpName').focus();},200);
+  return false;
+}
+function showRegStatus(type,msg){
+  const el=document.getElementById('regStatus');
+  el.className='reg-status '+(type==='ok'?'ok':'err');el.textContent=msg;
+}
+function addHistory(skill,activity,result,band){
+  APP.history.unshift({time:nowStr(),skill,activity,result,band:band||null});
+  if(APP.history.length>200)APP.history=APP.history.slice(0,200);
+  persist();renderHistory();renderStats();
+}
+
+/* ============================================================
+   1. THÔNG TIN HỌC SINH
+   ============================================================ */
+function saveStudent(){
+  const name=document.getElementById('inpName').value.trim();
+  const cls=document.getElementById('inpClass').value.trim();
+  const school=document.getElementById('inpSchool').value.trim();
+  if(!name||!cls){showRegStatus('err','💡 Nhập Họ tên và Lớp giúp thầy nhé.');document.getElementById('inpName').focus();return;}
+  if(name.length<2){showRegStatus('err','💡 Họ tên hơi ngắn, kiểm tra lại nhé.');return;}
+  APP.student={name,class:cls,school:school||'THPT Trần Phú'};
+  persist();showRegStatus('ok','✅ Đã lưu: '+name+' – '+cls);
+  renderStats();
+  const hero=document.getElementById('regHero');
+  hero.style.boxShadow='0 0 0 4px rgba(30,123,76,.35),0 8px 24px rgba(212,160,23,.22)';
+  setTimeout(()=>{hero.style.boxShadow='';},1200);
+}
+
+/* ============================================================
+   2. THỐNG KÊ
+   ============================================================ */
+function renderStats(){
+  const dates=[...new Set(APP.checkins)].sort().reverse();
+  let streak=0;
+  if(dates.length){let d=new Date();for(let i=0;i<400;i++){const ds=d.toISOString().slice(0,10);if(dates.includes(ds)){streak++;d.setDate(d.getDate()-1);}else break;}}
+  const set=(id,v)=>{const el=document.getElementById(id);if(el)el.textContent=v;};
+  set('statStreak',streak);set('statTotalSessions',APP.history.length);set('statWords',APP.vocab.length);
+  const bands=[];
+  if(APP.listeningScore!=null)bands.push(scoreToBand(APP.listeningScore,40));
+  if(APP.readingScore!=null)bands.push(scoreToBand(APP.readingScore,40));
+  if(APP.writingBand!=null)bands.push(APP.writingBand);
+  if(APP.speakingBand!=null)bands.push(APP.speakingBand);
+  const avg=bands.length?bands.reduce((a,b)=>a+b,0)/bands.length:null;
+  set('statAvgBand',avg?roundBand(avg).toFixed(1):'—');
+  setSkillRow('Listening',APP.listeningScore!=null?scoreToBand(APP.listeningScore,40):null);
+  setSkillRow('Reading',APP.readingScore!=null?scoreToBand(APP.readingScore,40):null);
+  setSkillRow('Writing',APP.writingBand);
+  setSkillRow('Speaking',APP.speakingBand);
+  renderEvaluation();renderJourney();
+}
+function setSkillRow(skill,band){
+  const last=document.getElementById('last'+skill),st=document.getElementById('status'+skill);
+  if(!last)return;
+  if(band==null){last.textContent='—';st.innerHTML='<span class="tag">Chưa có</span>';return;}
+  const cls=band>=6.5?'band-65':band>=6?'band-6':'band-5';
+  last.innerHTML='<span class="band-badge '+cls+'">'+roundBand(band).toFixed(1)+'</span>';
+  st.innerHTML=band>=6.5?'<span style="color:var(--success);font-weight:700;">✅ Đạt</span>':'<span style="color:var(--warning);font-weight:700;">⚠️ Cần cải thiện</span>';
+}
+function scoreToBand(score,total){
+  const p=score/total;
+  if(p>=.89)return 8;if(p>=.84)return 7.5;if(p>=.77)return 7;
+  if(p>=.70)return 6.5;if(p>=.60)return 6;if(p>=.50)return 5.5;
+  if(p>=.40)return 5;return 4.5;
+}
+function roundBand(b){return Math.round(b*2)/2;}
+
+function renderHistory(){
+  const tb=document.getElementById('historyBody');if(!tb)return;
+  if(!APP.history.length){tb.innerHTML='<tr><td colspan="4" class="muted">Chưa có lịch sử.</td></tr>';return;}
+  tb.innerHTML=APP.history.slice(0,30).map(h=>'<tr><td style="font-size:.78rem;white-space:nowrap;">'+h.time+'</td><td>'+h.skill+'</td><td>'+h.activity+'</td><td>'+(h.result||'')+(h.band?' · Band '+roundBand(h.band).toFixed(1):'')+'</td></tr>').join('');
+}
+function renderEvaluation(){
+  const box=document.getElementById('evaluationBox');if(!box)return;
+  const bands=[];
+  if(APP.listeningScore!=null)bands.push({s:'Listening',b:scoreToBand(APP.listeningScore,40)});
+  if(APP.readingScore!=null)bands.push({s:'Reading',b:scoreToBand(APP.readingScore,40)});
+  if(APP.writingBand!=null)bands.push({s:'Writing',b:APP.writingBand});
+  if(APP.speakingBand!=null)bands.push({s:'Speaking',b:APP.speakingBand});
+  if(!bands.length){box.innerHTML='<p class="muted">Chưa đủ dữ liệu.</p>';return;}
+  const avg=bands.reduce((s,x)=>s+x.b,0)/bands.length;
+  const weak=bands.filter(x=>x.b<6.5).map(x=>x.s);
+  let html='<p style="font-size:.9rem;">Band trung bình: <strong style="font-size:1.2rem;color:var(--navy);">'+roundBand(avg).toFixed(1)+'</strong></p>';
+  if(weak.length)html+='<p style="font-size:.84rem;color:var(--warning);margin-top:6px;">⚠️ Ưu tiên: <strong>'+weak.join(', ')+'</strong>.</p>';
+  else html+='<p style="font-size:.84rem;color:var(--success);margin-top:6px;">🎉 Tất cả đã đạt 6.5! Hướng tới 7.0.</p>';
+  box.innerHTML=html;
+}
+
+/* ============================================================
+   3. TIMER
+   ============================================================ */
+const timers={};
+function fmt(s){const m=Math.floor(s/60),x=s%60;return(m<10?'0':'')+m+':'+(x<10?'0':'')+x;}
+function startTimer(id,sec){
+  if(timers[id])clearInterval(timers[id]);
+  const el=document.getElementById(id);if(!el)return;
+  let r=sec;el.textContent=fmt(r);
+  timers[id]=setInterval(()=>{r--;if(r<=0){clearInterval(timers[id]);el.textContent='⏰ Hết giờ!';return;}el.textContent=fmt(r);},1000);
+}
+function resetTimer(id,sec){if(timers[id])clearInterval(timers[id]);const el=document.getElementById(id);if(el)el.textContent=fmt(sec);}
+
+/* ============================================================
+   4. CHECK-IN
+   ============================================================ */
+function markTodayDone(){
+  const t=todayStr();
+  if(!APP.checkins.includes(t)){APP.checkins.push(t);persist();}
+  renderStats();
+  const box=document.getElementById('reminderBox');
+  if(box)box.querySelector('span').innerHTML='🎉 <strong>Tuyệt vời!</strong> Bạn đã check-in hôm nay.';
+}
+
+/* ============================================================
+   5. NGHE
+   ============================================================ */
+const listenData=[
+  {id:'q1',label:'Customer surname',answer:'Webb'},
+  {id:'q2',label:'Phone number',answer:'07982 431 776'},
+  {id:'q3',label:'Membership type',answer:'standard'},
+  {id:'q4',label:'Contract length',answer:'12 months'},
+  {id:'q5',label:'Start date',answer:'1 September'},
+  {id:'q6',label:'Class chosen',answer:'yoga'},
+  {id:'q7',label:"Trainer's first name",answer:'Sarah'},
+  {id:'q8',label:'Total cost',answer:'£450'}
+];
+function renderListening(){
+  const box=document.getElementById('listenQuestions');if(!box)return;
+  box.innerHTML=listenData.map((q,i)=>'<div class="exercise" style="margin:8px 0;padding:10px 12px;"><div class="q-text" style="font-size:.84rem;">'+(i+1)+'. '+q.label+': <input type="text" id="'+q.id+'" placeholder="Nhập đáp án..." style="max-width:220px;margin-left:8px;font-size:.82rem;"></div></div>').join('');
+}
+function checkListening(){
+  if(!requireRegistration())return;
+  let c=0;
+  listenData.forEach(q=>{
+    const inp=document.getElementById(q.id);if(!inp)return;
+    const v=(inp.value||'').trim().toLowerCase().replace(/\s+/g,' ');
+    const a=q.answer.toLowerCase().replace(/\s+/g,' ');
+    if(v===a){c++;inp.style.borderColor='var(--success)';inp.style.background='#eef7f1';}
+    else{inp.style.borderColor='var(--danger)';inp.style.background='#fdf0f0';}
+  });
+  const band=scoreToBand(c,8);
+  APP.listeningScore=Math.round((c/8)*40);persist();
+  document.getElementById('listenResult').innerHTML='<div class="feedback '+(c>=6?'correct':'wrong')+'">✅ Đúng '+c+'/8 · Band ≈ '+roundBand(band).toFixed(1)+'</div><p class="muted mt-8" style="font-size:.8rem;">Đáp án: '+listenData.map(q=>q.answer).join(' · ')+'</p>';
+  addHistory('Listening','Form Completion',c+'/8',band);
+}
+
+/* ============================================================
+   6. ĐỌC
+   ============================================================ */
+const readData=[
+  {text:'Coffee was discovered in Ethiopia by a goat herder named Kaldi.',answer:'T'},
+  {text:'Coffee was first cultivated in Europe.',answer:'F'},
+  {text:'By the 15th century, coffee was traded across the Middle East.',answer:'T'},
+  {text:'Pope Clement VIII banned coffee in Europe.',answer:'F'},
+  {text:'Coffee houses became centres for social and intellectual activity.',answer:'T'}
+];
+function renderReading(){
+  const box=document.getElementById('readQuestions');if(!box)return;
+  box.innerHTML=readData.map((q,i)=>'<div class="exercise" style="margin:8px 0;padding:10px 12px;"><div class="q-text" style="font-size:.84rem;">'+(i+1)+'. '+q.text+'</div><select id="readQ'+i+'" style="padding:6px 10px;border:1.5px solid var(--border);border-radius:6px;font-family:inherit;"><option value="">-- Chọn --</option><option value="T">True</option><option value="F">False</option><option value="NG">Not Given</option></select></div>').join('');
+}
+function checkReading(){
+  if(!requireRegistration())return;
+  let c=0;
+  readData.forEach((q,i)=>{
+    const sel=document.getElementById('readQ'+i);if(!sel)return;
+    if(sel.value===q.answer)c++;
+    sel.style.borderColor=sel.value===q.answer?'var(--success)':'var(--danger)';
+  });
+  const band=scoreToBand(c,5);
+  APP.readingScore=Math.round((c/5)*40);persist();
+  document.getElementById('readResult').innerHTML='<div class="feedback '+(c>=4?'correct':'wrong')+'">✅ Đúng '+c+'/5 · Band ≈ '+roundBand(band).toFixed(1)+'</div><p class="muted mt-8" style="font-size:.8rem;">Đáp án: '+readData.map(q=>q.answer).join(' · ')+'</p>';
+  addHistory('Reading','T/F/NG',c+'/5',band);
+}
+
+/* ============================================================
+   7. VIẾT
+   ============================================================ */
+function updateWordCount(){
+  const t=document.getElementById('writingInput').value.trim();
+  const n=t?t.split(/\s+/).length:0;
+  const el=document.getElementById('wordCount');
+  el.textContent='Số từ: '+n+' / 250';el.style.color=n>=250?'var(--success)':'var(--muted)';
+}
+function submitWriting(){
+  if(!requireRegistration())return;
+  const text=document.getElementById('writingInput').value.trim();
+  const n=text?text.split(/\s+/).length:0;
+  if(n<100){alert('Bài hơi ngắn, viết thêm nhé (mục tiêu ≥ 250 từ).');return;}
+  let band=5.5;if(n>=250)band+=.5;if(n>=300)band+=.25;
+  const sents=text.split(/[.!?]+/).filter(s=>s.trim().length>10);
+  const avg=n/Math.max(sents.length,1);
+  if(avg>12&&avg<28)band+=.25;
+  band=Math.min(roundBand(band),7.5);
+  APP.writingBand=band;persist();
+  document.getElementById('writingResult').innerHTML='<div class="feedback info">📊 Band ước tính: <strong>'+roundBand(band).toFixed(1)+'</strong> · '+n+' từ</div><p class="muted mt-8" style="font-size:.8rem;">Đánh giá tự động theo độ dài/cấu trúc. Nhờ AI chấm để chính xác theo 4 tiêu chí.</p>';
+  addHistory('Writing','Task 2',n+' từ',band);
+}
+
+/* ============================================================
+   8. NÓI
+   ============================================================ */
+function recordSpeaking(part){
+  if(!requireRegistration())return;
+  const band=roundBand(6+Math.random()*.5);
+  APP.speakingBand=band;persist();
+  addHistory('Speaking',part,'Đã luyện',band);
+  alert('✅ Đã ghi nhận '+part+'.\nBand ước tính: '+band.toFixed(1)+'\n(Bản demo không lưu audio thật.)');
+}
+
+/* ============================================================
+   9. MOCK TESTS
+   ============================================================ */
+const mockTests=[
+  {name:'Đề 1 · Cambridge 16 – Test 2',listening:{note:'Audio Cambridge 16 Test 2.'},reading:{note:'Academic Reading 60 phút.'},writing:{task1:'The chart shows Internet access in three countries (2000–2020).',task2:'Some think university students should study what they like; others say only useful subjects. Discuss both views.'},speaking:{part1:'Where is your hometown?',part2:'Describe a difficult skill you learned.',part3:'Why do some skills take longer?'}},
+  {name:'Đề 2 · Cambridge 17 – Test 1',listening:{note:'Audio Cambridge 17 Test 1.'},reading:{note:'Academic Reading 60 phút.'},writing:{task1:'The diagram shows milk production.',task2:'Unpaid community service should be compulsory in high school. Agree/disagree?'},speaking:{part1:'Do you work or study?',part2:'Describe a time you helped someone.',part3:'Are people today more willing to help?'}},
+  {name:'Đề 3 · IDP Official Practice',listening:{note:'IDP Listening có đáp án PDF.'},reading:{note:'IDP Academic Reading.'},writing:{task1:'The table shows underground railway systems in six cities.',task2:'Why do people research the history of their house? How can they do it?'},speaking:{part1:'What do you do in free time?',part2:'Describe an important decision.',part3:'Should young people decide alone?'}}
+];
+function renderMockTabs(){
+  const c=document.getElementById('mockTabs');if(!c)return;
+  c.innerHTML=mockTests.map((t,i)=>'<button class="'+(i===0?'active':'')+'" onclick="selectMock('+i+')" style="padding:9px 18px;border:2px solid var(--border);background:#fff;border-radius:9px;cursor:pointer;font-weight:700;font-size:.84rem;font-family:inherit;">'+t.name+'</button>').join('');
+}
+function selectMock(i){
+  document.querySelectorAll('#mockTabs button').forEach((b,j)=>{
+    b.classList.toggle('active',j===i);
+    if(j===i){b.style.borderColor='var(--gold)';b.style.background='#fffbea';}
+    else{b.style.borderColor='var(--border)';b.style.background='#fff';}
+  });
+  const t=mockTests[i],box=document.getElementById('mockContent');
+  box.innerHTML=`
+    <div class="card"><h2>🎧 Listening</h2><p class="muted">${t.listening.note}</p><div class="exercise"><label>Đúng /40:</label> <input type="number" id="mockListenScore" min="0" max="40" style="max-width:100px;margin-left:10px;" value="${APP.mockListenScore!=null?APP.mockListenScore:''}"><button class="btn btn-sm btn-primary" onclick="saveMockScore('listening')">Lưu</button> <span id="mockListenBand" class="muted"></span></div></div>
+    <div class="card"><h2>📖 Reading</h2><p class="muted">${t.reading.note}</p><div class="exercise"><label>Đúng /40:</label> <input type="number" id="mockReadScore" min="0" max="40" style="max-width:100px;margin-left:10px;" value="${APP.mockReadScore!=null?APP.mockReadScore:''}"><button class="btn btn-sm btn-primary" onclick="saveMockScore('reading')">Lưu</button> <span id="mockReadBand" class="muted"></span></div></div>
+    <div class="card"><h2>✍️ Writing</h2><p><strong>Task 1:</strong> ${t.writing.task1}</p><p><strong>Task 2:</strong> ${t.writing.task2}</p><div class="exercise"><label>Band Writing:</label> <input type="number" id="mockWritingBand" min="4" max="9" step="0.5" style="max-width:100px;margin-left:10px;" value="${APP.writingBand!=null?APP.writingBand:''}"><button class="btn btn-sm btn-primary" onclick="saveMockBand('writing')">Lưu</button></div></div>
+    <div class="card"><h2>🗣️ Speaking</h2><p><strong>Part 1:</strong> ${t.speaking.part1}</p><p><strong>Part 2:</strong> ${t.speaking.part2}</p><p><strong>Part 3:</strong> ${t.speaking.part3}</p><div class="exercise"><label>Band Speaking:</label> <input type="number" id="mockSpeakingBand" min="4" max="9" step="0.5" style="max-width:100px;margin-left:10px;" value="${APP.speakingBand!=null?APP.speakingBand:''}"><button class="btn btn-sm btn-primary" onclick="saveMockBand('speaking')">Lưu</button></div></div>
+  `;
+  if(APP.mockListenScore!=null){const el=document.getElementById('mockListenBand');if(el)el.textContent='≈ Band '+roundBand(scoreToBand(APP.mockListenScore,40)).toFixed(1);}
+  if(APP.mockReadScore!=null){const el=document.getElementById('mockReadBand');if(el)el.textContent='≈ Band '+roundBand(scoreToBand(APP.mockReadScore,40)).toFixed(1);}
+}
+function saveMockScore(skill){
+  if(!requireRegistration())return;
+  const id=skill==='listening'?'mockListenScore':'mockReadScore';
+  const v=parseInt(document.getElementById(id).value);
+  if(isNaN(v)||v<0||v>40){alert('Nhập 0–40 giúp thầy nhé.');return;}
+  if(skill==='listening')APP.mockListenScore=v;else APP.mockReadScore=v;
+  persist();
+  const band=scoreToBand(v,40);
+  const el=document.getElementById(skill==='listening'?'mockListenBand':'mockReadBand');
+  if(el)el.textContent='≈ Band '+roundBand(band).toFixed(1);
+  addHistory(skill==='listening'?'Listening':'Reading','Mock Test',v+'/40',band);
+}
+function saveMockBand(skill){
+  if(!requireRegistration())return;
+  const id=skill==='writing'?'mockWritingBand':'mockSpeakingBand';
+  const v=parseFloat(document.getElementById(id).value);
+  if(isNaN(v)||v<4||v>9){alert('Nhập band 4.0–9.0 giúp thầy nhé.');return;}
+  if(skill==='writing')APP.writingBand=roundBand(v);else APP.speakingBand=roundBand(v);
+  persist();addHistory(skill==='writing'?'Writing':'Speaking','Mock Test','Band '+roundBand(v).toFixed(1),roundBand(v));
+}
+
+/* ============================================================
+   10. TỪ VỰNG
+   ============================================================ */
+function addVocab(){
+  if(!requireRegistration())return;
+  const inp=document.getElementById('vocabInput');const w=inp.value.trim();if(!w)return;
+  APP.vocab.push({word:w,date:nowStr()});persist();inp.value='';renderVocab();renderStats();
+}
+function renderVocab(){
+  const box=document.getElementById('vocabList');if(!box)return;
+  if(!APP.vocab.length){box.innerHTML='<span class="muted">Chưa có từ nào.</span>';return;}
+  box.innerHTML=APP.vocab.slice(-10).reverse().map(v=>'<span class="tag" style="margin:3px 0;">'+v.word+'</span>').join('');
+}
+
+/* ============================================================
+   11. DAILY
+   ============================================================ */
+const dailyBank=[
+  {skill:'Speaking P1',q:'What kind of music do you like?',type:'text'},
+  {skill:'Speaking P2',q:'Describe a book you enjoyed.',type:'text'},
+  {skill:'Writing T2',q:'Online learning is as effective as classroom learning. Agree/disagree?',type:'textarea'},
+  {skill:'Writing T2',q:'Traffic congestion: causes and solutions.',type:'textarea'},
+  {skill:'Reading',q:'Summarise a recent article in 3–4 sentences.',type:'textarea'},
+  {skill:'Listening',q:'Listen to BBC 6 Minute English and note 5 new words.',type:'textarea'}
+];
+function newDailyQuestion(){
+  const it=dailyBank[Math.floor(Math.random()*dailyBank.length)];
+  document.getElementById('dailyQuestion').textContent='['+it.skill+'] '+it.q;
+  const area=document.getElementById('dailyAnswerArea');
+  area.innerHTML=it.type==='text'
+    ?'<input type="text" id="dailyAnswer" placeholder="Câu trả lời..." style="width:100%;padding:9px;border:1.5px solid var(--border);border-radius:8px;margin:8px 0;font-family:inherit;"><button class="btn btn-sm btn-primary" onclick="saveDaily()">Lưu</button>'
+    :'<textarea id="dailyAnswer" rows="4" placeholder="Viết câu trả lời..." style="width:100%;padding:9px;border:1.5px solid var(--border);border-radius:8px;margin:8px 0;font-family:inherit;"></textarea><button class="btn btn-sm btn-primary" onclick="saveDaily()">Lưu</button>';
+}
+function saveDaily(){
+  if(!requireRegistration())return;
+  const a=document.getElementById('dailyAnswer');if(!a)return;
+  if(!a.value.trim()){alert('Nhập câu trả lời giúp thầy nhé.');return;}
+  const q=document.getElementById('dailyQuestion').textContent;
+  addHistory('Daily',q.slice(0,60)+'...','Đã lưu',null);
+  alert('✅ Đã lưu câu trả lời hàng ngày!');
+}
+
+/* ============================================================
+   12. CHECKLIST
+   ============================================================ */
+function saveChecklist(){
+  let n=0;
+  document.querySelectorAll('#tab-daily input[type="checkbox"]').forEach(cb=>{if(cb.checked)n++;});
+  if(n)markTodayDone();
+  alert('✅ Đã lưu checklist ('+n+'/4 mục).');
+}
+
+/* ============================================================
+   13. EXPORT / CLEAR
+   ============================================================ */
+function exportData(){
+  const blob=new Blob([JSON.stringify(APP,null,2)],{type:'application/json'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);
+  a.download='ielts_tranphu_'+(APP.student.name||'hocsinh')+'.json';a.click();
+}
+function clearData(){
+  if(!confirm('Xoá toàn bộ dữ liệu? Không thể hoàn tác.'))return;
+  localStorage.removeItem(STORAGE_KEY);location.reload();
+}
+
+/* ============================================================
+   14. CÂY HÀNH TRÌNH
+   ============================================================ */
+const TREE={
+  listening:{label:'🎧 Listening',tab:'listening',milestones:['Section 1–2','Section 3–4','Mock /40']},
+  reading:{label:'📖 Reading',tab:'reading',milestones:['Skimming','T/F/NG','Mock /40']},
+  writing:{label:'✍️ Writing',tab:'writing',milestones:['Task 1','Task 2','Full 60p']},
+  speaking:{label:'🗣️ Speaking',tab:'speaking',milestones:['Part 1','Part 2','Part 3']}
+};
+function milestoneIndex(skill){
+  const map=v=>v==null?0:v>=7?3:v>=6.5?2:v>=6?1:0;
+  if(skill==='listening')return APP.listeningScore!=null?map(scoreToBand(APP.listeningScore,40)):0;
+  if(skill==='reading')return APP.readingScore!=null?map(scoreToBand(APP.readingScore,40)):0;
+  if(skill==='writing')return APP.writingBand!=null?map(APP.writingBand):0;
+  if(skill==='speaking')return APP.speakingBand!=null?map(APP.speakingBand):0;
+  return 0;
+}
+function renderJourney(){
+  const cols=document.getElementById('journeyCols');if(!cols)return;
+  const skills=['listening','reading','writing','speaking'];
+  let doneTotal=0,nodeTotal=0,current='';
+  cols.innerHTML=skills.map(sk=>{
+    const conf=TREE[sk],done=milestoneIndex(sk);
+    doneTotal+=done;nodeTotal+=conf.milestones.length;
+    const nodes=conf.milestones.map((m,i)=>{
+      let cls='todo';if(i<done)cls='done';else if(i===done&&done<conf.milestones.length)cls='current';
+      if(cls==='current'&&!current)current=conf.label+' · '+m;
+      const target=(i===conf.milestones.length-1)?'mocktests':conf.tab;
+      return `<div class="tree-node ${cls}" onclick="goTo('${target}')"><span class="dot"></span>${m}</div>`;
+    }).join('');
+    return `<div class="tree-col"><div class="tree-skill" onclick="goTo('${conf.tab}')">${conf.label}</div><div class="tree-milestones">${nodes}</div></div>`;
+  }).join('');
+  const pct=nodeTotal?Math.round(doneTotal/nodeTotal*100):0;
+  document.getElementById('journeyProgressBar').style.width=pct+'%';
+  document.getElementById('journeyProgressText').textContent=pct+'%';
+  const here=document.getElementById('journeyHere');
+  if(pct>=100)here.innerHTML='🏆 <strong>Hoàn thành tất cả mốc!</strong> Sẵn sàng cho 6.5+.';
+  else if(current)here.innerHTML='📍 Bạn đang ở: <strong>'+current+'</strong>.';
+  else here.innerHTML='📍 Hãy lưu thông tin và làm bài đầu tiên!';
+}
+function goTo(tab){
+  const btn=document.querySelector('#mainTabs button[data-tab="'+tab+'"]');
+  if(btn)btn.click();window.scrollTo({top:0,behavior:'smooth'});
+}
+
+/* ============================================================
+   15. GEMINI AI
+   ============================================================ */
+function getKey(){return localStorage.getItem(KEY_STORAGE)||'';}
+function saveGeminiKey(){
+  const inp=document.getElementById('geminiKeyInput'),st=document.getElementById('geminiKeyStatus');
+  const k=(inp.value||'').trim();
+  if(!k){st.textContent='⚠️ Key trống';st.className='ai-status error';return;}
+  if(!k.startsWith('AIza')){st.textContent='⚠️ Key không đúng định dạng (phải bắt đầu bằng AIza...)';st.className='ai-status error';return;}
+  localStorage.setItem(KEY_STORAGE,k);
+  st.textContent='✅ Đã lưu key (chỉ trên máy này)';st.className='ai-status ok';
+}
+
+async function callGemini(systemPrompt,userMessage,outEl,statusEl){
+  const key=getKey();
+  if(!key){
+    if(outEl){outEl.textContent='⚠️ Chưa có Gemini API Key.\nVào tab 🌳 Cây hành trình → nhập key → Lưu key.\nHoặc xem tab 🔑 Hướng dẫn lấy API Key để được hướng dẫn chi tiết.';outEl.classList.add('show');}
+    if(statusEl){statusEl.textContent='Thiếu key';statusEl.className='ai-status error';}
+    return;
+  }
+  if(statusEl){statusEl.innerHTML='<span class="spinner"></span> Đang phân tích...';statusEl.className='ai-status loading';}
+  if(outEl){outEl.textContent='⏳ Đang chờ Gemini...';outEl.classList.add('show');}
+
+  try{
+    const res=await fetch('https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key='+encodeURIComponent(key),{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        system_instruction:{parts:{text:systemPrompt}},
+        contents:[{parts:[{text:userMessage}]}],
+        generationConfig:{temperature:0.6,maxOutputTokens:2048}
+      })
+    });
+    if(!res.ok){const t=await res.text();throw new Error('HTTP '+res.status+' · '+t.slice(0,200));}
+    const data=await res.json();
+    const reply=data.candidates?.[0]?.content?.parts?.[0]?.text||'(AI không trả về nội dung)';
+    if(outEl)outEl.textContent=reply;
+    if(statusEl){statusEl.textContent='✅ Đã có nhận xét';statusEl.className='ai-status ok';}
+    addHistory('AI Coach','Gemini','Đã nhận nhận xét',null);
+    return reply;
+  }catch(e){
+    if(outEl)outEl.textContent='❌ Lỗi: '+e.message+'\n\nKiểm tra:\n• Key đã dán đúng chưa (bắt đầu bằng AIza...)\n• Có kết nối mạng\n• Nếu bị chặn CORS, thử trình duyệt khác hoặc dùng proxy';
+    if(statusEl){statusEl.textContent='❌ Lỗi';statusEl.className='ai-status error';}
+  }
+}
+
+async function aiReviewListening(){
+  const ans=listenData.map((q,i)=>(i+1)+'. '+q.label+' → '+((document.getElementById(q.id)||{}).value?.trim()||'(trống)')).join('\n');
+  const cor=listenData.map((q,i)=>(i+1)+'. '+q.label+' → '+q.answer).join('\n');
+  await callGemini(
+    'Bạn là giáo viên IELTS Listening giàu kinh nghiệm, thân thiện với học sinh Việt Nam. Trả lời bằng tiếng Việt, ngắn gọn, chỉ rõ câu sai và mẹo cải thiện dạng Form Completion.',
+    'Bài: Listening Section 1 – Form Completion.\n\nHọc sinh trả lời:\n'+ans+'\n\nĐáp án:\n'+cor+'\n\nNhận xét và 3 mẹo cải thiện.',
+    document.getElementById('aiListenOut'),document.getElementById('aiListenStatus')
+  );
+}
+async function aiReviewReading(){
+  const ans=readData.map((q,i)=>(i+1)+'. '+q.text+' → '+((document.getElementById('readQ'+i)||{}).value||'(trống)')).join('\n');
+  const cor=readData.map((q,i)=>(i+1)+' → '+q.answer).join('\n');
+  await callGemini(
+    'Bạn là giáo viên IELTS Reading giàu kinh nghiệm. Trả lời bằng tiếng Việt, giải thích T/F/NG và cách định vị thông tin.',
+    'Bài đọc "The History of Coffee" – T/F/NG.\n\nHọc sinh:\n'+ans+'\n\nĐáp án:\n'+cor+'\n\nNhận xét từng câu và mẹo.',
+    document.getElementById('aiReadOut'),document.getElementById('aiReadStatus')
+  );
+}
+async function aiReviewWriting(){
+  const t=document.getElementById('writingInput').value.trim();
+  if(!t){alert('Viết bài trước khi nhờ AI chấm nhé.');return;}
+  if(!requireRegistration())return;
+  await callGemini(
+    'Bạn là giám khảo IELTS Writing Task 2. Chấm 4 tiêu chí: Task Response, Coherence, Lexical, Grammar. Trả lời tiếng Việt, band từng tiêu chí, band tổng, nhận xét cụ thể và 3–5 gợi ý.',
+    'Đề: Some people believe governments should invest more in public transport than in new roads. To what extent agree/disagree?\n\nBài làm:\n'+t,
+    document.getElementById('aiWriteOut'),document.getElementById('aiWriteStatus')
+  );
+}
+async function aiReviewSpeaking(){
+  const t=(document.getElementById('speakAnswerInput').value||'').trim();
+  if(!t){alert('Gõ transcript câu trả lời nói để AI nhận xét nhé.');return;}
+  if(!requireRegistration())return;
+  await callGemini(
+    'Bạn là giám khảo IELTS Speaking. Đánh giá Fluency, Lexical, Grammar, Pronunciation (ước lượng). Trả lời tiếng Việt, chỉ điểm mạnh, lỗi và gợi ý nâng band.',
+    'Transcript câu trả lời nói:\n'+t+'\n\nNhận xét và đề xuất cải thiện.',
+    document.getElementById('aiSpeakOut'),document.getElementById('aiSpeakStatus')
+  );
+}
+async function aiTutorAsk(){
+  const q=(document.getElementById('aiTutorInput').value||'').trim();
+  if(!q){alert('Nhập câu hỏi nhé.');return;}
+  await callGemini(
+    'Bạn là trợ lý học tập IELTS thân thiện cho học sinh THPT Trần Phú. Trả lời tiếng Việt, ngắn gọn, thực tế, có ví dụ.',
+    q,
+    document.getElementById('aiTutorOut'),document.getElementById('aiTutorStatus')
+  );
+}
+
+/* ============================================================
+   16. TAB SWITCH & INIT
+   ============================================================ */
+document.getElementById('mainTabs').addEventListener('click',e=>{
+  const btn=e.target.closest('button');if(!btn)return;
+  const tab=btn.dataset.tab;
+  document.querySelectorAll('#mainTabs button').forEach(b=>b.classList.toggle('active',b===btn));
+  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.toggle('active',p.id==='tab-'+tab));
+  if(tab==='listening')renderListening();
+  if(tab==='reading')renderReading();
+  if(tab==='mocktests'){renderMockTabs();selectMock(0);}
+  if(tab==='daily')newDailyQuestion();
+  if(tab==='journey')renderJourney();
+  window.scrollTo({top:0,behavior:'smooth'});
+});
+
+(function init(){
+  loadData();renderListening();renderReading();renderMockTabs();selectMock(0);
+  renderVocab();renderHistory();renderStats();renderJourney();newDailyQuestion();
+  const saved=getKey();
+  if(saved){const inp=document.getElementById('geminiKeyInput');if(inp)inp.value=saved;}
+  if(APP.checkins.includes(todayStr())){
+    document.querySelectorAll('#tab-daily input[type="checkbox"]').forEach(cb=>cb.checked=true);
+  }
+})();
+</script>
+</body>
+</html>
